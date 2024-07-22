@@ -1,0 +1,35 @@
+
+<div class="reminder-form">
+    <div class="form-row">
+        <div class="col">
+            <label for="dateOfCreation">Дата и время создания:</label>
+            <input type="datetime-local"[value]="convertDateToDatetimeLocal(reminder.dateOfCreation)"
+            (input)="updateDateOfCreation($event)">
+        </div>
+        <div class="col">
+            <label for="dateOfCompletion">Дата и время выполнения:</label>
+            <input type="datetime-local" [value]="convertDateToDatetimeLocal(reminder.dateOfCompletion)"
+            (input)="updateDateOfCompletion($event)">
+        </div>
+        <div class="col">
+            <label for="status">Статус:</label>
+            <select [(ngModel)]="selectedStatus" (ngModelChange)="updateStatus($event)">
+                <option *ngFor="let status of statusList" [value]="status.statusName">
+                    {{status.statusName}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="shortDescription">Краткое описание:</label>
+        <input type="text" [(ngModel)]="reminder.shortDescription">
+    </div>
+    <div class="form-row">
+        <label for="fullDescription">Полное описание:</label>
+        <textarea [(ngModel)]="reminder.fullDescription"></textarea>
+    </div>
+    <div class="form-row">
+        <button (click)="save()">Сохранить</button>
+        <button (click)="goBack()">Назад</button>
+    </div>
+</div>

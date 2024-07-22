@@ -1,0 +1,19 @@
+
+    <table>
+        <thead>
+            <tr>
+                <th>Краткое описание</th>
+                <th>Дата создания</th>
+                <th>Дата выполнения</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reminder of reminders; let i = index" (dblclick)="editReminder(i,reminder)">
+                <td>{{ reminder.shortDescription }}</td>
+                <td>{{ reminder.dateOfCreation | date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{ reminder.dateOfCompletion | date: 'dd/MM/yyyy HH:mm' }}</td>
+                <td>{{ reminder.status.statusName }}</td>
+            </tr>
+        </tbody>
+    </table>
